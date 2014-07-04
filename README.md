@@ -1,4 +1,4 @@
-Unity3DModel
+Unity3DMVC
 ============
 
-专为unity3d打造的数据层
+专为unity3d打造的数据层架构
