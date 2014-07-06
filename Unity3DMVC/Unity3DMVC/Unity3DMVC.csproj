@@ -43,7 +43,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\INPUT_INFO.cs" />
     <Compile Include="Controller\UIControllerBase.cs" />
+    <Compile Include="Controller\UIEvent.cs" />
     <Compile Include="ModelEx\Model.cs" />
     <Compile Include="ModelEx\ModelManager.cs" />
     <Compile Include="Model\DataBase.cs" />
