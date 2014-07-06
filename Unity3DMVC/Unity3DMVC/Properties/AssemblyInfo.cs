@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Unity3DMVC")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("www.52shendu.com")]
+[assembly: AssemblyCompany("www.luzexi.com")]
 [assembly: AssemblyProduct("Unity3DMVC")]
-[assembly: AssemblyCopyright("Copyright © www.52shendu.com 2014")]
+[assembly: AssemblyCopyright("Copyright © www.luzexi.com 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
