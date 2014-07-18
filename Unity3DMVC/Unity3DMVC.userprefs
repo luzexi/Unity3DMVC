@@ -1,38 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/Controller/UIControllerBase.cs">
-    <Files>
-      <File FileName="Unity3DMVC/ModelEx/ModelManager.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/Controller/INPUT_INFO.cs" Line="23" Column="21" />
-      <File FileName="Unity3DMVC/Controller/UIControllerBase.cs" Line="11" Column="1" />
-      <File FileName="Unity3DMVC/Controller/UIEvent.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/ModelEx/Model.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Unity3DMVC" expanded="True">
-            <Node name="Controller" expanded="True">
-              <Node name="UIControllerBase.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>bytes[0]</Value>
-          <Value>bytes[1]</Value>
-          <Value>m</Value>
-          <Value>n</Value>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
