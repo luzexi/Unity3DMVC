@@ -1,6 +1,35 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/View/UIViewBase.cs">
+    <Files>
+      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="16" Column="22" />
+      <File FileName="Unity3DMVC/Controller/GUIBase.cs" Line="18" Column="44" />
+      <File FileName="../../Unity3DNetwork-http/HTTPNetwork/HTTPPacketRequest.cs" Line="76" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Unity3DMVC" expanded="True">
+            <Node name="Controller" expanded="True" />
+            <Node name="View" expanded="True">
+              <Node name="UIViewBase.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>bytes[0]</Value>
+          <Value>bytes[1]</Value>
+          <Value>m</Value>
+          <Value>n</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
