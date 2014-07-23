@@ -20,11 +20,11 @@ public abstract class Model : ScriptableObject , IEnumerable
     public Model()
     {
         Type t = this.GetType();
-        this.s_lstData = ModelManager.sInstance.Get(t.FullName);
+        this.s_lstData = ModelMgr.sInstance.Get(t.FullName);
         if (this.s_lstData == null)
         {
             this.s_lstData = new List<Model>();
-            ModelManager.sInstance.Add(t.FullName, this.s_lstData);
+            ModelMgr.sInstance.Add(t.FullName, this.s_lstData);
         }
     }
 

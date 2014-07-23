@@ -15,24 +15,24 @@ using SimpleJSON;
 /// <summary>
 /// Model管理类
 /// </summary>
-public class ModelManager
+public class ModelMgr
 {
     private Dictionary<string, List<Model>> m_mapData = new Dictionary<string, List<Model>>();
 
-    private static ModelManager s_cInstance;
-    public static ModelManager sInstance
+    private static ModelMgr s_cInstance;
+    public static ModelMgr sInstance
     {
         get
         {
             if (s_cInstance == null)
             {
-                s_cInstance = new ModelManager();
+                s_cInstance = new ModelMgr();
             }
             return s_cInstance;
         }
     }
 
-    public ModelManager()
+    public ModelMgr()
     { 
         //
     }

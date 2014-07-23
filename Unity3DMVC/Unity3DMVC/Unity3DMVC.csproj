@@ -44,8 +44,10 @@
     <Compile Include="Controller\CScene.cs" />
     <Compile Include="Controller\UIControllerBase.cs" />
     <Compile Include="Model\Model.cs" />
-    <Compile Include="Model\ModelManager.cs" />
     <Compile Include="Model\SimpleJSON.cs" />
+    <Compile Include="Table\TableBase.cs" />
+    <Compile Include="Table\TableMgr.cs" />
+    <Compile Include="Model\ModelMgr.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -56,4 +58,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Table\" />
+  </ItemGroup>
 </Project>

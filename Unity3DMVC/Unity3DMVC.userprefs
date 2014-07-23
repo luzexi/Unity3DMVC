@@ -1,23 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/Model/ModelManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/Table/TableBase.cs">
     <Files>
-      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="13" Column="1" />
       <File FileName="../../Unity3DNetwork-http/HTTPNetwork/HTTPLoader.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/Model/Model.cs" Line="1" Column="1" />
-      <File FileName="Unity3DMVC/Model/ModelManager.cs" Line="105" Column="41" />
+      <File FileName="Unity3DMVC/Model/Model.cs" Line="102" Column="1" />
+      <File FileName="Unity3DMVC/Model/ModelMgr.cs" Line="3" Column="1" />
       <File FileName="Unity3DMVC/Model/SimpleJSON.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Controller/UIControllerBase.cs" Line="206" Column="1" />
+      <File FileName="Unity3DMVC/Controller/UIEvent.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Controller/INPUT_INFO.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Controller/CScene.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Table/TableBase.cs" Line="84" Column="23" />
+      <File FileName="Unity3DMVC/Table/TableMgr.cs" Line="21" Column="2" />
+      <File FileName="../../LinBinDouZhe/LinBingDouZhe/Code/Client/Source/Util/TABLE_READER.cs" Line="64" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Unity3DMVC" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="Controller" expanded="True" />
-            <Node name="Model" expanded="True">
-              <Node name="ModelManager.cs" selected="True" />
+            <Node name="Model" expanded="True" />
+            <Node name="Table" expanded="True">
+              <Node name="TableMgr.cs" selected="True" />
             </Node>
-            <Node name="View" expanded="True" />
           </Node>
         </State>
       </Pad>
