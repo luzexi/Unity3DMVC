@@ -1,9 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/View/UIViewBase.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Unity3DMVC/Model/ModelManager.cs">
     <Files>
-      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="18" Column="44" />
+      <File FileName="Unity3DMVC/View/UIViewBase.cs" Line="1" Column="1" />
       <File FileName="../../Unity3DNetwork-http/HTTPNetwork/HTTPLoader.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Model/Model.cs" Line="1" Column="1" />
+      <File FileName="Unity3DMVC/Model/ModelManager.cs" Line="105" Column="41" />
+      <File FileName="Unity3DMVC/Model/SimpleJSON.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,8 +14,9 @@
           <Node name="Unity3DMVC" expanded="True">
             <Node name="References" expanded="True" />
             <Node name="Controller" expanded="True" />
-            <Node name="Model" selected="True" />
-            <Node name="ModelEx" expanded="True" />
+            <Node name="Model" expanded="True">
+              <Node name="ModelManager.cs" selected="True" />
+            </Node>
             <Node name="View" expanded="True" />
           </Node>
         </State>
