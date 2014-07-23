@@ -1,42 +1,103 @@
-﻿//using UnityEngine;
-//using System;
-//using System.Collections;
+﻿using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 
-///// <summary>
-///// Model
-///// </summary>
-//public class Model : IModel
-//{
-//    protected Hashtable DB;
+//  Model.cs
+//  Author: Lu Zexi
+//  2014-07-05
 
-//    public Model()
-//    {
-//        string key = GetKey();
-//        object o = DataBase.Instance.Get(key);
-//        if (o == null)
-//        {
-//            DataBase.Instance.Set(key, new Hashtable());
-//        }
-//        DB = (Hashtable)DataBase.Instance.Get(key);
-//    }
 
-//    public Model (Hashtable db) { DB = db; }
 
-//    public Model (object db) { DB = db as Hashtable; }
+namespace Game.MVC
+{
+    /// <summary>
+    /// Model类
+    /// </summary>
+    public abstract class Model : ScriptableObject , IEnumerable
+    {
+        protected List<Model> s_lstData;
 
-//    public void		Set (object key, object value) { DB[key] = value; }
-//    public object	Get (object key) { return DB.ContainsKey(key) ? DB[key] : null; }
-//    public void		Delete (object key) { if (DB.ContainsKey(key)) DB.Remove(key); }
-//    public bool		HasKey (object key) { return DB.ContainsKey(key); }
-//    public void		Clear () { DB.Clear(); }
-//    public int		Count () { return DB.Count; }
-//    public Hashtable GetDB () { return DB; }
+        public Model()
+        {
+            Type t = this.GetType();
+            this.s_lstData = ModelManager.sInstance.Get(t.FullName);
+            if (this.s_lstData == null)
+            {
+                this.s_lstData = new List<Model>();
+                ModelManager.sInstance.Add(t.FullName, this.s_lstData);
+            }
+        }
 
-//    public void DeleteModel()
-//    {
-//        DataBase.Instance.Delete( GetKey() );
-//    }
+        public int Count
+        {
+            get { return s_lstData.Count; }
+        }
 
-//    protected virtual string GetKey() { return String.Empty; }
-//}
+        /// <summary>
+        /// get the instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T Get<T>(int index) where T : Model
+        {
+            if (index >= this.s_lstData.Count)
+                return default(T);
+            return this.s_lstData[index] as T;
+        }
+
+        public Model this[int index]
+        {
+            get { if (index >= s_lstData.Count||index<0) return null; return s_lstData[index]; }
+        }
+
+        /// <summary>
+        /// get the enumerator.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator GetEnumerator()
+        {
+            foreach (Model item in s_lstData)
+                yield return item;
+        }
+
+        /// <summary>
+        /// add the model instance.
+        /// </summary>
+        /// <param name="model"></param>
+        public void Add(Model model)
+        {
+            s_lstData.Add(model);
+        }
+
+		/// <summary>
+		/// Remove this instance.
+		/// </summary>
+		public void Remove()
+		{
+			s_lstData.Clear();
+		}
+
+        /// <summary>
+        /// remove the index instance.
+        /// </summary>
+        /// <param name="index"></param>
+        public void Remove(int index)
+        {
+            if (index >= s_lstData.Count)
+                return;
+            s_lstData.RemoveAt(index);
+        }
+
+        /// <summary>
+        /// remove the instance in the list.
+        /// </summary>
+        /// <param name="model"></param>
+        public void Remove(Model model)
+        {
+            s_lstData.Remove(model);
+        }
+    }
+}

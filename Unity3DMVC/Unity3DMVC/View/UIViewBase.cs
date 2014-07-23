@@ -40,9 +40,9 @@ namespace Game.MVC
 				}
 			}
 		}
-		
-		
-		private Transform FIND_CHILD( Transform parent , string childName )
+
+
+		protected Transform FIND_CHILD( Transform parent , string childName )
 		{
 			foreach( Transform item in parent )
 			{
