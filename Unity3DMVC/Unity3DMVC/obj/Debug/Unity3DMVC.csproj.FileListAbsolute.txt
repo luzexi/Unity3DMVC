@@ -1,6 +1,0 @@
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\obj\Debug\ResolveAssemblyReference.cache
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\bin\Debug\Unity3DMVC.dll
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\bin\Debug\Unity3DMVC.pdb
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\bin\Debug\UnityEngine.dll
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\obj\Debug\Unity3DMVC.dll
-E:\jes\Client\Source\Lib\Unity3DMVC\Unity3DMVC\obj\Debug\Unity3DMVC.pdb
