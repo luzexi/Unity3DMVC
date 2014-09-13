@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using SimpleJSON;
+using Game.Table;
 
 
 //	TableManager.cs
