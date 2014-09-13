@@ -17,7 +17,7 @@ using SimpleJSON;
 /// </summary>
 public class TableMgr
 {
-	private Dictionary<string, List<TableBase>> m_mapData = new Dictionary<string, List<TableBase>>();
+	private Dictionary<string, List<CTable>> m_mapData = new Dictionary<string, List<CTable>>();
 	
 	private static TableMgr s_cInstance;
 	public static TableMgr sInstance
@@ -42,7 +42,7 @@ public class TableMgr
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <returns></returns>
-	public T GetTable<T>() where T : TableBase , new()
+	public T GetTable<T>() where T : CTable , new()
 	{
 		T t = new T();
 		if( t.Count > 0 )
@@ -58,7 +58,7 @@ public class TableMgr
 	/// </summary>
 	/// <param name="name"></param>
 	/// <returns></returns>
-	internal List<TableBase> Get(string name)
+	internal List<CTable> Get(string name)
 	{
 		if (!this.m_mapData.ContainsKey(name))
 			return null;
@@ -70,7 +70,7 @@ public class TableMgr
 	/// </summary>
 	/// <param name="name"></param>
 	/// <param name="lst"></param>
-	internal void Add(string name, List<TableBase> lst)
+	internal void Add(string name, List<CTable> lst)
 	{
 		this.m_mapData.Add(name, lst);
 	}

@@ -6,26 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//  Table.cs
+//  CTable.cs
 //  Author: Lu Zexi
 //  2014-07-05
 
 
 
 /// <summary>
-/// Table类
+/// CTable类
 /// </summary>
-public abstract class TableBase : ScriptableObject , IEnumerable
+public abstract class CTable : ScriptableObject , IEnumerable
 {
-	protected List<TableBase> s_lstData;
+	protected List<CTable> s_lstData;
 	
-	public TableBase()
+	public CTable()
 	{
 		Type t = this.GetType();
 		this.s_lstData = TableMgr.sInstance.Get(t.FullName);
 		if (this.s_lstData == null)
 		{
-			this.s_lstData = new List<TableBase>();
+			this.s_lstData = new List<CTable>();
 			TableMgr.sInstance.Add(t.FullName, this.s_lstData);
 		}
 	}
@@ -41,14 +41,14 @@ public abstract class TableBase : ScriptableObject , IEnumerable
 	/// <typeparam name="T"></typeparam>
 	/// <param name="index"></param>
 	/// <returns></returns>
-	public T Get<T>(int index) where T : TableBase
+	public T Get<T>(int index) where T : CTable
 	{
 		if (index >= this.s_lstData.Count)
 			return default(T);
 		return this.s_lstData[index] as T;
 	}
 	
-	public TableBase this[int index]
+	public CTable this[int index]
 	{
 		get { if (index >= s_lstData.Count||index<0) return null; return s_lstData[index]; }
 	}
@@ -59,7 +59,7 @@ public abstract class TableBase : ScriptableObject , IEnumerable
 	/// <returns></returns>
 	public IEnumerator GetEnumerator()
 	{
-		foreach (TableBase item in s_lstData)
+		foreach (CTable item in s_lstData)
 			yield return item;
 	}
 
@@ -67,14 +67,14 @@ public abstract class TableBase : ScriptableObject , IEnumerable
 	/// Read the specified content.
 	/// </summary>
 	/// <param name="content">Content.</param>
-	public void Read(string content)
+	public virtual void Read(string content)
 	{
 		this.s_lstData.Clear();
 		string[,] vecStr = SplitCsvGrid(content);
 		for (int j = 2; j < vecStr.GetLength(1)-1; j++)
 		{
 			Type tableType = GetType();
-			TableBase tb = ScriptableObject.CreateInstance(tableType) as TableBase;
+			CTable tb = ScriptableObject.CreateInstance(tableType) as CTable;
 			FieldInfo[] fis = tableType.GetFields(BindingFlags.Public | BindingFlags.Instance);
 			for (int i = 0; i < vecStr.GetLength(0)-1; i++)
 			{
@@ -113,7 +113,7 @@ public abstract class TableBase : ScriptableObject , IEnumerable
 	/// add the model instance.
 	/// </summary>
 	/// <param name="model"></param>
-	public void Add(TableBase model)
+	public void Add(CTable model)
 	{
 		s_lstData.Add(model);
 	}
@@ -141,7 +141,7 @@ public abstract class TableBase : ScriptableObject , IEnumerable
 	/// remove the instance in the list.
 	/// </summary>
 	/// <param name="model"></param>
-	public void Remove(TableBase model)
+	public void Remove(CTable model)
 	{
 		s_lstData.Remove(model);
 	}
