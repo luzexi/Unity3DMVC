@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 //	BaseScene.cs
@@ -12,6 +13,11 @@ using System.Collections;
 public class CScene
 {
 	protected static CScene s_cCurrentScene;
+
+	public static bool Is(Type type)
+	{
+		return type == s_cCurrentScene.GetType();
+	}
 
 	public static void Switch<T>()
 		where T : CScene , new()
