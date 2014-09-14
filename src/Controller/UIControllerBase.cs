@@ -79,7 +79,7 @@ public abstract class UIControllerBase<T,V> : MonoBehaviour
 	/// <summary>
 	/// Destroy this instance.
 	/// </summary>
-	public void Destroy()
+	public virtual void Destroy()
 	{
 		this.m_bShow = false;
 		GameObject.Destroy(this.gameObject);

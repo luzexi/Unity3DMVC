@@ -23,8 +23,7 @@ public class UIViewBase : MonoBehaviour
 		foreach (FieldInfo f in fis)
 		{
 			Type fieldType = f.FieldType;
-			object obj = f.GetValue(this);
-			if( obj is List<GameObject> )
+			if( fieldType == typeof(List<GameObject>) )
 			{
 				List<GameObject> lst = new List<GameObject>();
 				for( int i = 1 ;;i++)
@@ -38,7 +37,7 @@ public class UIViewBase : MonoBehaviour
 					lst.Add(tra.gameObject);
 				}
 			}
-			else if( obj is GameObject || fieldType.IsSubclassOf(typeof(MonoBehaviour)))
+			else if( fieldType == typeof(GameObject) || fieldType.IsSubclassOf(typeof(MonoBehaviour)))
 			{
 				Transform tra = FIND_CHILD(this.transform , f.Name);
 				if(tra != null)
