@@ -22,9 +22,9 @@ public enum SwitchEffect
 public class CPageController
 {
 	public static void SwitchUI<T>(SwitchEffect effect)
-		where T : CPage
+//		where T : CPage<>
 	{
-		T.Show();
+//		T.sInstace.Show();
 	}
 
 	public static void SwitchScene()
