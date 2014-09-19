@@ -14,7 +14,7 @@ using System.Collections.Generic;
 /// <summary>
 /// the ui controller.
 /// </summary>
-public abstract class UIControllerBase : MonoBehaviour
+public abstract class CController : MonoBehaviour
 {
 	/// <summary>
 	/// Gets the layer.
@@ -23,12 +23,19 @@ public abstract class UIControllerBase : MonoBehaviour
 	public abstract UILAYER GetLayer();
 
 	/// <summary>
+	/// Gets the root path.
+	/// </summary>
+	/// <returns>The root path.</returns>
+	public abstract GameObject GetAnchor();
+
+	/// <summary>
 	/// Init this instance.
 	/// </summary>
 	public virtual void Init()
 	{
-		Vector3 pos = new Vector3(0,0,-100 * ((int)GetLayer()));
-		this.transform.position = pos;
+		this.transform.parent = GetAnchor().transform;
+		this.transform.localPosition = Vector3.zero;
+		this.transform.localScale = Vector3.one;
 	}
 
 
@@ -43,7 +50,7 @@ public abstract class UIControllerBase : MonoBehaviour
 	/// <param name="layerfix">If set to <c>true</c> layerfix.</param>
 	public void SET_PARENT(GameObject child , MonoBehaviour parent , bool layerfix = false)
 	{
-		SET_PARENT(child.transform,parent.transform);
+		SET_PARENT(child.transform,parent.transform, layerfix);
 	}
 
 	/// <summary>
@@ -54,7 +61,7 @@ public abstract class UIControllerBase : MonoBehaviour
 	/// <param name="layerfix">If set to <c>true</c> layerfix.</param>
 	public void SET_PARENT( MonoBehaviour child , GameObject parent, bool layerfix = false)
 	{
-		SET_PARENT(child.transform,parent.transform);
+		SET_PARENT(child.transform,parent.transform, layerfix);
 	}
 
 	/// <summary>
@@ -65,7 +72,7 @@ public abstract class UIControllerBase : MonoBehaviour
 	/// <param name="layerfix">If set to <c>true</c> layerfix.</param>
 	public void SET_PARENT( GameObject child , GameObject parent , bool layerfix = false)
 	{
-		SET_PARENT(child.transform,parent.transform);
+		SET_PARENT(child.transform,parent.transform , layerfix);
 	}
 
 	/// <summary>
@@ -79,7 +86,10 @@ public abstract class UIControllerBase : MonoBehaviour
 		child.parent = tmp_parent;
 		Vector3 pos = Vector3.zero;
 		if( layerfix )
+		{
 			pos = new Vector3(0,0,-100 * ((int)GetLayer()));
+			child.localScale = Vector3.one;
+		}
 		child.localPosition = pos;
 	}
 

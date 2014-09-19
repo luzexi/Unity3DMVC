@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 
 //	CPage.cs
@@ -14,8 +15,8 @@ using System.Collections;
 /// </summary>
 public class CPage<P,V,C> : MonoBehaviour
 	where P : MonoBehaviour
-	where V : UIViewBase
-	where C : UIControllerBase
+	where V : CView
+	where C : CController
 {
 	public static V s_cView = null;		//view
 	public static C s_cController = null;	//controller
@@ -40,6 +41,16 @@ public class CPage<P,V,C> : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Raises the load complete event.
+	/// </summary>
+	/// <param name="resMap">Res map.</param>
+	public void OnLoadComplete(Dictionary<string , object> resMap)
+	{
+		s_cView.m_mapRes = resMap;
+		s_cController.Init();
+	}
+
+	/// <summary>
 	/// Show this instance.
 	/// </summary>
 	public virtual void Show()
@@ -52,7 +63,6 @@ public class CPage<P,V,C> : MonoBehaviour
 	/// </summary>
 	public virtual void Init()
 	{
-		s_cView.Init();
 		s_cController.Init();
 	}
 

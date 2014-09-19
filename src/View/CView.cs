@@ -14,7 +14,7 @@ using UnityEngine;
 /// <summary>
 /// The View Base
 /// </summary>
-public class UIViewBase : MonoBehaviour
+public class CView : MonoBehaviour
 {
 	public Dictionary<string,object> m_mapRes = new Dictionary<string, object>();
 
