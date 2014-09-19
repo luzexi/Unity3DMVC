@@ -17,14 +17,16 @@ public enum SwitchEffect
 
 
 /// <summary>
-/// User interface controller.
+/// page controller.
 /// </summary>
-public class UIController
+public class CPageController
 {
-	public static void SwitchUI<T>(T t ,SwitchEffect effect)
+	public static void SwitchUI<T>(SwitchEffect effect)
+		where T : CPage
 	{
-		//
+		T.Show();
 	}
+
 	public static void SwitchScene()
 	{
 		//
