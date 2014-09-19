@@ -16,7 +16,12 @@ using UnityEngine;
 /// </summary>
 public class UIViewBase : MonoBehaviour
 {
-	void Awake()
+	public Dictionary<string,object> m_mapRes = new Dictionary<string, object>();
+
+	/// <summary>
+	/// Init this instance.
+	/// </summary>
+	public virtual void Init()
 	{
 		Type t = GetType();
 		FieldInfo[] fis = t.GetFields(BindingFlags.Public | BindingFlags.Instance);

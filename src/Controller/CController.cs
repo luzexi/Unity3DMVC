@@ -14,37 +14,8 @@ using System.Collections.Generic;
 /// <summary>
 /// the ui controller.
 /// </summary>
-public abstract class UIControllerBase<T,V> : MonoBehaviour
-	where T : MonoBehaviour
-	where V : UIViewBase
+public abstract class UIControllerBase : MonoBehaviour
 {
-	protected bool m_bShow;
-	protected GameObject m_cMain;
-	protected V m_cView;
-
-	protected static T s_cInstance;
-	public static T sInstance
-	{
-		get
-		{
-			if(s_cInstance == null)
-			{
-				Type t = typeof(T);
-				GameObject obj = new GameObject(t.Name);
-				s_cInstance = obj.AddComponent<T>();
-			}
-			return s_cInstance;
-		}
-	}
-
-	/// <summary>
-	/// Raises the destroy event.
-	/// </summary>
-	void OnDestroy()
-	{
-		s_cInstance = null;
-	}
-
 	/// <summary>
 	/// Gets the layer.
 	/// </summary>
@@ -52,41 +23,14 @@ public abstract class UIControllerBase<T,V> : MonoBehaviour
 	public abstract UILAYER GetLayer();
 
 	/// <summary>
-	/// Gets a value indicating whether this instance is show.
+	/// Init this instance.
 	/// </summary>
-	/// <value><c>true</c> if this instance is show; otherwise, <c>false</c>.</value>
-	public bool IsShow
+	public virtual void Init()
 	{
-		get{return this.m_bShow;}
+		Vector3 pos = new Vector3(0,0,-100 * ((int)GetLayer()));
+		this.transform.position = pos;
 	}
 
-	/// <summary>
-	/// Show this instance.
-	/// </summary>
-    public virtual void Show()
-	{
-		this.m_bShow = true;
-	}
-
-	/// <summary>
-	/// Hiden this instance.
-	/// </summary>
-	public virtual void Hiden()
-	{
-		this.m_bShow = false;
-	}
-
-	/// <summary>
-	/// Destroy this instance.
-	/// </summary>
-	public virtual void Destroy()
-	{
-		this.m_bShow = false;
-		GameObject.Destroy(this.gameObject);
-		s_cInstance = null;
-		Resources.UnloadUnusedAssets();
-		GC.Collect();
-	}
 
 //============================ set parent function ==========================
 

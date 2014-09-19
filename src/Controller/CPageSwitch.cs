@@ -19,7 +19,7 @@ public enum SwitchEffect
 /// <summary>
 /// page controller.
 /// </summary>
-public class CPageController
+public class CPageSwitch
 {
 	public static void SwitchUI<T>(SwitchEffect effect)
 //		where T : CPage<>
