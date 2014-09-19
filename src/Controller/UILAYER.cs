@@ -1,7 +1,7 @@
  /// <summary>
- /// GUI层级
+ /// UI层级
  /// </summary>
- public enum GUILAYER
+ public enum UILAYER
  {
  	GUI_BACKGROUND = 0, //背景层
  	GUI_MENU = 1,   //菜单层0

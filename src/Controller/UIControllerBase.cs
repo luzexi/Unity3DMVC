@@ -49,7 +49,7 @@ public abstract class UIControllerBase<T,V> : MonoBehaviour
 	/// Gets the layer.
 	/// </summary>
 	/// <returns>The layer.</returns>
-	public abstract GUILAYER GetLayer();
+	public abstract UILAYER GetLayer();
 
 	/// <summary>
 	/// Gets a value indicating whether this instance is show.
@@ -184,40 +184,42 @@ public abstract class UIControllerBase<T,V> : MonoBehaviour
     {
         return obj.transform.Find(path).GetComponent<T>();
     }
-//
-//        /// <summary>
-//        /// regist the mono event.
-//        /// </summary>
-//        /// <param name="mono"></param>
-//        /// <param name="callback"></param>
-//        /// <param name="arg"></param>
-//        public void RegistEvent(MonoBehaviour mono, UIEvent.OnCallBack callback, params object[] arg)
-//        {
-//            Regist(mono.gameObject, callback, arg);
-//        }
-//
-//        /// <summary>
-//        /// regist the gameobject event.
-//        /// </summary>
-//        /// <param name="obj"></param>
-//        /// <param name="callback"></param>
-//        /// <param name="arg"></param>
-//        public void RegistEvent(GameObject obj, UIEvent.OnCallBack callback, params object[] arg)
-//        {
-//            Regist(obj, callback, arg);
-//        }
-//
-//        /// <summary>
-//        /// regist the event .
-//        /// </summary>
-//        /// <param name="obj"></param>
-//        /// <param name="callback"></param>
-//        /// <param name="arg"></param>
-//        protected void Regist(GameObject obj, UIEvent.OnCallBack callback, object[] arg)
-//        {
-//            UIEvent uiEvent = obj.AddComponent<UIEvent>();
-//            uiEvent.m_cEvent = callback;
-//            uiEvent.m_vecArg = arg;
-//        }
+
+//========================= UI EVENT Regist Function ==================================
+
+	/// <summary>
+	/// regist the mono event.
+	/// </summary>
+	/// <param name="mono"></param>
+	/// <param name="callback"></param>
+	/// <param name="arg"></param>
+	public void RegistEvent(MonoBehaviour mono, UIEvent.OnCallBack callback, params object[] arg)
+	{
+	    Regist(mono.gameObject, callback, arg);
+	}
+
+	/// <summary>
+	/// regist the gameobject event.
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <param name="callback"></param>
+	/// <param name="arg"></param>
+	public void RegistEvent(GameObject obj, UIEvent.OnCallBack callback, params object[] arg)
+	{
+	    Regist(obj, callback, arg);
+	}
+
+	/// <summary>
+	/// regist the event .
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <param name="callback"></param>
+	/// <param name="arg"></param>
+	protected void Regist(GameObject obj, UIEvent.OnCallBack callback, object[] arg)
+	{
+	    UIEvent uiEvent = obj.AddComponent<UIEvent>();
+	    uiEvent.m_cEvent = callback;
+	    uiEvent.m_vecArg = arg;
+	}
 }
 
