@@ -44,7 +44,7 @@ public class CPage<P,V,C> : MonoBehaviour
 	/// Raises the load complete event.
 	/// </summary>
 	/// <param name="resMap">Res map.</param>
-	public void OnLoadComplete(Dictionary<string , object> resMap)
+	public virtual void OnLoadComplete(Dictionary<string , object> resMap)
 	{
 		s_cView.m_mapRes = resMap;
 		s_cController.Init();

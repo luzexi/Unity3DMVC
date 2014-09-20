@@ -13,40 +13,38 @@ using System.Collections.Generic;
 /// <summary>
 /// Model类
 /// </summary>
-public abstract class Model : ScriptableObject , IEnumerable
+public abstract class CModel : ScriptableObject , IEnumerable
 {
-    protected List<Model> s_lstData;
+    protected List<CModel> s_lstData;
 
-    public Model()
+    public CModel()
     {
         Type t = this.GetType();
-        this.s_lstData = ModelMgr.sInstance.Get(t.FullName);
+		this.s_lstData = CModelMgr.sInstance.Get(t.FullName);
         if (this.s_lstData == null)
         {
-            this.s_lstData = new List<Model>();
-            ModelMgr.sInstance.Add(t.FullName, this.s_lstData);
+			this.s_lstData = new List<CModel>();
+            CModelMgr.sInstance.Add(t.FullName, this.s_lstData);
         }
     }
 
+	//count
     public int Count
     {
         get { return s_lstData.Count; }
     }
 
-    /// <summary>
-    /// get the instance.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="index"></param>
-    /// <returns></returns>
-    public T Get<T>(int index) where T : Model
-    {
-        if (index >= this.s_lstData.Count)
-            return default(T);
-        return this.s_lstData[index] as T;
-    }
+	//get index
+	public T Get<T>(int index)
+		where T : CModel
+	{
+		if (index >= s_lstData.Count||index<0)
+			return default(T);
+		return s_lstData[index] as T;
+	}
 
-    public Model this[int index]
+	//get index
+	public CModel this[int index]
     {
         get { if (index >= s_lstData.Count||index<0) return null; return s_lstData[index]; }
     }
@@ -57,7 +55,7 @@ public abstract class Model : ScriptableObject , IEnumerable
     /// <returns></returns>
     public IEnumerator GetEnumerator()
     {
-        foreach (Model item in s_lstData)
+		foreach (CModel item in s_lstData)
             yield return item;
     }
 
@@ -65,7 +63,7 @@ public abstract class Model : ScriptableObject , IEnumerable
     /// add the model instance.
     /// </summary>
     /// <param name="model"></param>
-    public void Add(Model model)
+	public void Add(CModel model)
     {
         s_lstData.Add(model);
     }
@@ -73,7 +71,7 @@ public abstract class Model : ScriptableObject , IEnumerable
 	/// <summary>
 	/// Remove this instance.
 	/// </summary>
-	public void Remove()
+	public void Clear()
 	{
 		s_lstData.Clear();
 	}
@@ -93,7 +91,7 @@ public abstract class Model : ScriptableObject , IEnumerable
     /// remove the instance in the list.
     /// </summary>
     /// <param name="model"></param>
-    public void Remove(Model model)
+	public void Remove(CModel model)
     {
         s_lstData.Remove(model);
     }

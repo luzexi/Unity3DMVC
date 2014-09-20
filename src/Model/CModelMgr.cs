@@ -15,24 +15,24 @@ using LitJson;
 /// <summary>
 /// Model管理类
 /// </summary>
-public class ModelMgr
+public class CModelMgr
 {
-    private Dictionary<string, List<Model>> m_mapData = new Dictionary<string, List<Model>>();
+	private Dictionary<string, List<CModel>> m_mapData = new Dictionary<string, List<CModel>>();
 
-    private static ModelMgr s_cInstance;
-    public static ModelMgr sInstance
+    private static CModelMgr s_cInstance;
+    public static CModelMgr sInstance
     {
         get
         {
             if (s_cInstance == null)
             {
-                s_cInstance = new ModelMgr();
+                s_cInstance = new CModelMgr();
             }
             return s_cInstance;
         }
     }
 
-    public ModelMgr()
+    public CModelMgr()
     { 
         //
     }
@@ -42,7 +42,7 @@ public class ModelMgr
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public T GetModel<T>() where T : Model , new()
+	public T GetModel<T>() where T : CModel , new()
     {
         T t = new T();
         if( t.Count > 0 )
@@ -50,7 +50,7 @@ public class ModelMgr
 			t = t.Get<T>(0);
         	return t;
 		}
-		return default(T);
+		return t;
     }
 
 	/// <summary>
@@ -92,7 +92,7 @@ public class ModelMgr
 	{
 		this.m_mapData.Clear();
 		string json = File.ReadAllText(pathFile);
-		this.m_mapData = JsonMapper.ToObject<Dictionary<string, List<Model>>>(json);
+		this.m_mapData = JsonMapper.ToObject<Dictionary<string, List<CModel>>>(json);
 //		JSONClass json = JSONNode.LoadFromFile(pathFile) as JSONClass;
 //		foreach( KeyValuePair<string , JSONNode> item in json )
 //		{
@@ -144,7 +144,7 @@ public class ModelMgr
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    internal List<Model> Get(string name)
+	internal List<CModel> Get(string name)
     {
         if (!this.m_mapData.ContainsKey(name))
             return null;
@@ -156,7 +156,7 @@ public class ModelMgr
     /// </summary>
     /// <param name="name"></param>
     /// <param name="lst"></param>
-	internal void Add(string name, List<Model> lst)
+	internal void Add(string name, List<CModel> lst)
     {
         this.m_mapData.Add(name, lst);
     }
