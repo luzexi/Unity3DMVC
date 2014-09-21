@@ -76,6 +76,16 @@ public abstract class CModel : ScriptableObject , IEnumerable
 		s_lstData.Clear();
 	}
 
+	/// <summary>
+	/// Gets the array.
+	/// </summary>
+	/// <returns>The array.</returns>
+	/// <typeparam name="T">The 1st type parameter.</typeparam>
+	public T[] ToArray<T>()
+	{
+		return this.s_lstData.ToArray() as T[];
+	}
+
     /// <summary>
     /// remove the index instance.
     /// </summary>
