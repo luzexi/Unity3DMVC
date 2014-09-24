@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using LitJson;
 
+
 //	ModelManager.cs
 //	Author: Lu Zexi
 //	2014-07-23
@@ -17,7 +18,7 @@ using LitJson;
 /// </summary>
 public class CModelMgr
 {
-	private Dictionary<string, List<CModel>> m_mapData = new Dictionary<string, List<CModel>>();
+	private Dictionary<string, List<object>> m_mapData = new Dictionary<string, List<object>>();
 
     private static CModelMgr s_cInstance;
     public static CModelMgr sInstance
@@ -35,22 +36,6 @@ public class CModelMgr
     public CModelMgr()
     { 
         //
-    }
-
-    /// <summary>
-    /// get the model.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-	public T GetModel<T>() where T : CModel , new()
-    {
-        T t = new T();
-        if( t.Count > 0 )
-		{
-			t = t.Get<T>(0);
-        	return t;
-		}
-		return t;
     }
 
 	/// <summary>
@@ -92,7 +77,7 @@ public class CModelMgr
 	{
 		this.m_mapData.Clear();
 		string json = File.ReadAllText(pathFile);
-		this.m_mapData = JsonMapper.ToObject<Dictionary<string, List<CModel>>>(json);
+		this.m_mapData = JsonMapper.ToObject<Dictionary<string, List<object>>>(json);
 //		JSONClass json = JSONNode.LoadFromFile(pathFile) as JSONClass;
 //		foreach( KeyValuePair<string , JSONNode> item in json )
 //		{
@@ -144,7 +129,7 @@ public class CModelMgr
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-	internal List<CModel> Get(string name)
+	internal List<object> Get(string name)
     {
         if (!this.m_mapData.ContainsKey(name))
             return null;
@@ -156,7 +141,7 @@ public class CModelMgr
     /// </summary>
     /// <param name="name"></param>
     /// <param name="lst"></param>
-	internal void Add(string name, List<CModel> lst)
+	internal void Add(string name, List<object> lst)
     {
         this.m_mapData.Add(name, lst);
     }
