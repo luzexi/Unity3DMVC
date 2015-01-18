@@ -20,7 +20,7 @@ public abstract class CController : MonoBehaviour
 	/// Gets the layer.
 	/// </summary>
 	/// <returns>The layer.</returns>
-	public abstract UILAYER GetLayer();
+	public virtual UILAYER GetLayer(){return UILAYER.NONE;}
 
 	/// <summary>
 	/// Gets the root path.
@@ -40,7 +40,6 @@ public abstract class CController : MonoBehaviour
 
 
 //============================ set parent function ==========================
-
 
 	/// <summary>
 	/// SEs the t_ PAREN.
@@ -87,10 +86,10 @@ public abstract class CController : MonoBehaviour
 		Vector3 pos = Vector3.zero;
 		if( layerfix )
 		{
-			pos = new Vector3(0,0,-100 * ((int)GetLayer()));
-			child.localScale = Vector3.one;
+			pos = Vector3.zero;
 		}
 		child.localPosition = pos;
+        child.localScale = Vector3.one;
 	}
 
 //========================= FIND function ==================================
@@ -140,40 +139,7 @@ public abstract class CController : MonoBehaviour
     }
 
 //========================= UI EVENT Regist Function ==================================
-
-	/// <summary>
-	/// regist the mono event.
-	/// </summary>
-	/// <param name="mono"></param>
-	/// <param name="callback"></param>
-	/// <param name="arg"></param>
-	public void RegistEvent(MonoBehaviour mono, UIEvent.OnCallBack callback, params object[] arg)
-	{
-	    Regist(mono.gameObject, callback, arg);
-	}
-
-	/// <summary>
-	/// regist the gameobject event.
-	/// </summary>
-	/// <param name="obj"></param>
-	/// <param name="callback"></param>
-	/// <param name="arg"></param>
-	public void RegistEvent(GameObject obj, UIEvent.OnCallBack callback, params object[] arg)
-	{
-	    Regist(obj, callback, arg);
-	}
-
-	/// <summary>
-	/// regist the event .
-	/// </summary>
-	/// <param name="obj"></param>
-	/// <param name="callback"></param>
-	/// <param name="arg"></param>
-	protected void Regist(GameObject obj, UIEvent.OnCallBack callback, object[] arg)
-	{
-	    UIEvent uiEvent = obj.AddComponent<UIEvent>();
-	    uiEvent.m_cEvent = callback;
-	    uiEvent.m_vecArg = arg;
-	}
+//
+//========================================================================
 }
 

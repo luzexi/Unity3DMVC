@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 
@@ -12,148 +13,98 @@ using UnityEngine;
 /// <summary>
 /// ui event.
 /// </summary>
-public class UIEvent : MonoBehaviour
+public class UIEvent : UnityEngine.EventSystems.EventTrigger
 {
-	public delegate void OnCallBack(INPUT_INFO info, params object[] arg);
-	public OnCallBack m_cEvent;
-	public object[] m_vecArg;
+	public delegate void PointerEventDelegate ( BaseEventData eventData , GameObject go , object[] arg);
+	public delegate void BaseEventDelegate ( BaseEventData eventData , GameObject go , object[] arg );
+	public delegate void AxisEventDelegate ( BaseEventData eventData , GameObject go , object[] arg );
 
-	/// <summary>
-	/// OnHover
-	/// </summary>
-	/// <param name="isOver"></param>
-	protected void OnHover(bool isOver)
+	public object[] m_vecArg = null;
+
+	public BaseEventDelegate onDeselect = null;
+	public PointerEventDelegate onDrag = null;
+	public PointerEventDelegate onDrop = null;
+	public AxisEventDelegate onMove = null;
+	public PointerEventDelegate onClick = null;
+	public PointerEventDelegate onDown = null;
+	public PointerEventDelegate onEnter = null;
+	public PointerEventDelegate onExit = null;
+	public PointerEventDelegate onUp = null;
+	public PointerEventDelegate onScroll = null;
+	public PointerEventDelegate onSelect = null;
+	public PointerEventDelegate onUpdateSelect = null;
+
+	public static UIEvent Get(GameObject go)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.HOVER;
-	    info.m_bDone = isOver;
-	    CallEvent(info);
+		UIEvent listener = go.GetComponent<UIEvent>();
+		if (listener == null) listener = go.AddComponent<UIEvent>();
+		return listener;
 	}
 
-	/// <summary>
-	/// OnPress
-	/// </summary>
-	/// <param name="isDown"></param>
-	protected void OnPress(bool isDown)
+	public static UIEvent Get(MonoBehaviour go)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.PRESS;
-	    info.m_bDone = isDown;
-	    CallEvent(info);
+		UIEvent listener = go.GetComponent<UIEvent>();
+		if (listener == null) listener = go.gameObject.AddComponent<UIEvent>();
+		return listener;
 	}
 
-	/// <summary>
-	/// on select
-	/// </summary>
-	/// <param name="isSelected"></param>
-	protected void OnSelect(bool isSelected)
+	public override void OnDeselect( BaseEventData eventData )
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.SELECT;
-	    info.m_bDone = isSelected;
-	    CallEvent(info);
+		if(onDeselect != null) onDeselect(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// click
-	/// </summary>
-	protected void OnClick()
+	public override void OnDrag( PointerEventData eventData )
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.CLICK;
-	    CallEvent(info);
+		if(onDrag != null) onDrag(eventData , gameObject , this.m_vecArg);
 	}
 
-
-	/// <summary>
-	/// double click
-	/// </summary>
-	protected void OnDoubleClick()
+	public override void OnDrop( PointerEventData eventData )
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.DOUBLE_CLICK;
-	    CallEvent(info);
+		if(onDrop != null) onDrop(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// on drag
-	/// </summary>
-	/// <param name="delta"></param>
-	protected void OnDrag(Vector2 delta)
+	public override void OnMove( AxisEventData eventData )
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.DRAG;
-	    CallEvent(info);
+		if(onMove != null) onMove(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// on drop
-	/// </summary>
-	/// <param name="target"></param>
-	protected void OnDrop(GameObject target)
+	public override void OnPointerClick(PointerEventData eventData)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.DROP;
-	    CallEvent(info);
+		if(onClick != null) onClick(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// input
-	/// </summary>
-	/// <param name="text"></param>
-	protected void OnInput(string text)
+	public override void OnPointerDown (PointerEventData eventData)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.INPUT;
-	    CallEvent(info);
+		if(onDown != null) onDown(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// On tool tip
-	/// </summary>
-	/// <param name="show"></param>
-	protected void OnTooltip(bool show)
+	public override void OnPointerEnter (PointerEventData eventData)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.TOOLTIP;
-	    info.m_bDone = show;
-	    CallEvent(info);
+		if(onEnter != null) onEnter(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// on scroll
-	/// </summary>
-	/// <param name="delta"></param>
-	protected void OnScroll(float delta)
+	public override void OnPointerExit (PointerEventData eventData)
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.SCROLL;
-	    info.m_fDelta = delta;
-	    CallEvent(info);
+		if(onExit != null) onExit(eventData , gameObject , this.m_vecArg);
+	}
+	public override void OnPointerUp (PointerEventData eventData)
+	{
+		if(onUp != null) onUp(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// on key
-	/// </summary>
-	/// <param name="key"></param>
-	protected void OnKey(KeyCode key)
+	public override void OnScroll( PointerEventData eventData )
 	{
-	    INPUT_INFO info = new INPUT_INFO();
-	    info.m_eType = INPUT_TYPE.KEY;
-	    info.m_eKey = key;
-	    CallEvent(info);
+		if(onScroll != null) onScroll(eventData , gameObject , this.m_vecArg);
 	}
 
-	/// <summary>
-	/// call the event
-	/// </summary>
-	/// <param name="info"></param>
-	protected void CallEvent(INPUT_INFO info)
+	public override void OnSelect (BaseEventData eventData)
 	{
-	    if (this.m_cEvent != null)
-	    {
-	        this.m_cEvent(info, this.m_vecArg);
-	    }
+		if(onSelect != null) onSelect(eventData , gameObject , this.m_vecArg);
+	}
+
+	public override void OnUpdateSelected (BaseEventData eventData)
+	{
+		if(onUpdateSelect != null) onUpdateSelect(eventData , gameObject , this.m_vecArg);
 	}
 }
 

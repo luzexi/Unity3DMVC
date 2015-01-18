@@ -3,6 +3,7 @@
  /// </summary>
  public enum UILAYER
  {
+    NONE = -1,
  	GUI_BACKGROUND = 0, //背景层
  	GUI_MENU = 1,   //菜单层0
  	GUI_MENU1,      //菜单层1

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -73,6 +73,7 @@ public class CPage<P,V,C> : MonoBehaviour
 	{
 		GameObject.Destroy(this.gameObject);
 		Resources.UnloadUnusedAssets();
+		GC.Collect();
 	}
 
 	/// <summary>

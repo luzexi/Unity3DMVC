@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 //	UIController.cs
@@ -21,7 +21,7 @@ public enum SwitchEffect
 /// </summary>
 public class CPageSwitch
 {
-	public static void SwitchUI<T>(SwitchEffect effect)
+	public static void SwitchUI<T>(SwitchEffect effect = SwitchEffect.None)
 //		where T : CPage<>
 	{
 //		T.sInstace.Show();
